@@ -3,7 +3,7 @@ import {version} from './package.json';
 export default {
     input: "src/index.js", // 入口
     output: {
-        file: "dist/z-state.js", // 输出文件
+        file: "dist/ystate.js", // 输出文件
         format:'es',
         name:'zState',
         banner:`/*

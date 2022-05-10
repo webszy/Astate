@@ -1,8 +1,8 @@
 {
-  "name": "z-state",
+  "name": "ystate",
   "version": "0.0.1",
   "description": "A state and only state management library for Vue3",
-  "main": "/dist/z-state.js",
+  "main": "/dist/ystate.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
