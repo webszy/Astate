@@ -1,11 +1,11 @@
-# a-state
+# onlystate
 一个仅关注state的状态库，
 基于vue3-reactive模块实现，
 并且提供vue-devtools插件
 # 特点
 + 关注于State,去掉了action,你可以通过compositionAPI来时实现action
 # 使用
-`npm install @webszy/a-state --save-dev`
+`npm install onlystate --save-dev`
 1. 定义state
 ```javascript
 //store.js
