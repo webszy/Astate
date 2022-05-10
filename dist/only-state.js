@@ -1,7 +1,7 @@
 /*
-* z-state.js 0.0.2
+* only-state.js 0.0.1
 * author:webszy
-* date:2022/5/10 上午11:34:06
+* date:2022/5/10 下午12:03:55
 */
 import { reactive, computed, toRefs } from 'vue';
 

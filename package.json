@@ -2,7 +2,7 @@
   "name": "onlystate",
   "version": "0.0.1",
   "description": "A state and only state management library for Vue3",
-  "main": "/dist/a-state.js",
+  "main": "/dist/only-state.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
