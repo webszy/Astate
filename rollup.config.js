@@ -3,11 +3,11 @@ import {version} from './package.json';
 export default {
     input: "src/index.js", // 入口
     output: {
-        file: "dist/a-state.js", // 输出文件
+        file: "dist/only-state.js", // 输出文件
         format:'es',
-        name:'zState',
+        name:'onlyState',
         banner:`/*
-* z-state.js ${version}
+* only-state.js ${version}
 * author:webszy
 * date:${new Date().toLocaleString()}
 */`

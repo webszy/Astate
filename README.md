@@ -9,7 +9,7 @@
 1. 定义state
 ```javascript
 //store.js
-import {defineState} from '@webszy/a-state';
+import {defineState} from 'only-state';
 const install = defineState({
     a: 1,
     b: 2
@@ -29,7 +29,7 @@ app.use(Astate);
 3. 基本使用
 ```vue
 <script setup>
-import {useState} from '@webszy/a-state';
+import {useState} from 'only-state';
     const [a, b] = useState('a', 'b');
     a.value = 2;
 </script>

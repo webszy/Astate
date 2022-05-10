@@ -1,6 +1,6 @@
 {
-  "name": "@webszy/a-state",
-  "version": "0.0.2",
+  "name": "onlystate",
+  "version": "0.0.1",
   "description": "A state and only state management library for Vue3",
   "main": "/dist/a-state.js",
   "type": "module",
@@ -9,7 +9,7 @@
     "update": "npm run build && npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/webszy/Astate#readme",
+  "homepage": "https://github.com/webszy/only-state#readme",
   "keywords": ["vue3", "state", "state management","shared state"],
   "author": "webszy",
   "license": "MIT",
