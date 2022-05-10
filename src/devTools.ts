@@ -1,6 +1,8 @@
+// @ts-ignore
 import {setupDevtoolsPlugin} from '@vue/devtools-api'
+import {realState_type} from "./utils";
 
-const initDevtools =   (app,store) => {
+const initDevtools =   (app:any,store:realState_type) => {
     const stateType = 'routing properties'
     const INSPECTOR_ID = 'zState-inspector'
     setupDevtoolsPlugin({
@@ -13,7 +15,7 @@ const initDevtools =   (app,store) => {
         componentStateTypes: [
             stateType
         ]
-    }, api => {
+    }, (api:any) => {
         // Use the API here
         setInterval(() => {
             api.sendInspectorState(INSPECTOR_ID)
@@ -23,7 +25,7 @@ const initDevtools =   (app,store) => {
             label: 'zState',
             icon: 'collections_bookmark'
         })
-        api.on.getInspectorTree((payload, context) => {
+        api.on.getInspectorTree((payload:any) => {
             if (payload.inspectorId === INSPECTOR_ID) {
                 payload.rootNodes = [{
                     id: 'root',
@@ -32,17 +34,19 @@ const initDevtools =   (app,store) => {
                 }]
             }
         })
-        api.on.getInspectorState((payload, context) => {
+        api.on.getInspectorState((payload:any) => {
             if (payload.nodeId === 'root') {
-                const getters = []
-                Object.keys(store.getters).forEach(key => {
-                    getters.push({
-                        key,
-                        value:store.getters[key].value
+                const getters:any[] = []
+                if(store.getters){
+                    Object.keys(store.getters).forEach((key:string) => {
+                        getters.push({
+                            key,
+                            value:store.getters[key].value
+                        })
                     })
-                })
+                }
 
-                const state = []
+                const state:any[] = []
                 Object.keys(store.state).forEach(key => {
                     state.push({
                         key,

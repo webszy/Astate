@@ -10,7 +10,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/webszy/only-state#readme",
-  "keywords": ["vue3", "state", "state management","shared state"],
+  "keywords": [
+    "vue3",
+    "state",
+    "state management",
+    "shared state"
+  ],
   "author": "webszy",
   "license": "MIT",
   "dependencies": {
@@ -20,6 +25,8 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "rollup": "^2.72.1"
+    "@rollup/plugin-typescript": "^8.3.2",
+    "rollup": "^2.72.1",
+    "rollup-plugin-typescript2": "^0.31.2"
   }
 }
