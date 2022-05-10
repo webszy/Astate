@@ -5,6 +5,7 @@
 # 特点
 + 关注于State,去掉了action,你可以通过compositionAPI来时实现action
 # 使用
+`npm install @webszy/a-state --save-dev`
 1. 定义state
 ```javascript
 //store.js
