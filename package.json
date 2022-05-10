@@ -8,9 +8,10 @@
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/webszy/zState#readme",
   "keywords": ["vue3", "state", "state management","shared state"],
-  "author": "",
-  "license": "ISC",
+  "author": "webszy",
+  "license": "MIT",
   "dependencies": {
     "@vue/devtools-api": "^6.1.4",
     "lodash-es": "^4.17.21",
