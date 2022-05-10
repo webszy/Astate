@@ -1,8 +1,8 @@
 {
-  "name": "ystate",
+  "name": "@webszy/a-state",
   "version": "0.0.1",
   "description": "A state and only state management library for Vue3",
-  "main": "/dist/ystate.js",
+  "main": "/dist/a-state.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",

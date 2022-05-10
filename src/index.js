@@ -48,7 +48,7 @@ export const defineState = (state,getters)=>{
     }
     return installStore
 }
-export const useStore = (key,...rest)=>{
+export const useState = (key,...rest)=>{
     const params = concatAllParams(key,...rest)
     const len = params.length
     const hasParams = len >= 0
@@ -90,7 +90,7 @@ export const useGetters = (key,...rest)=>{
         return params.map(getOne)
     }
 }
-export const storeToRefs = () => {
+export const stateToRefs = () => {
     return {..._ZState.getters,...toRefs(_ZState.state)};
 }
 export const resetState = ()=>{

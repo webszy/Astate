@@ -1,7 +1,7 @@
 /*
 * z-state.js 0.0.1
 * author:webszy
-* date:2022/5/10 上午11:16:41
+* date:2022/5/10 上午11:27:59
 */
 import { reactive, computed, toRefs } from 'vue';
 
@@ -282,7 +282,7 @@ const defineState = (state,getters)=>{
     }
     return installStore
 };
-const useStore = (key,...rest)=>{
+const useState = (key,...rest)=>{
     const params = concatAllParams(key,...rest);
     const len = params.length;
     const hasParams = len >= 0;
@@ -324,7 +324,7 @@ const useGetters = (key,...rest)=>{
         return params.map(getOne)
     }
 };
-const storeToRefs = () => {
+const stateToRefs = () => {
     return {..._ZState.getters,...toRefs(_ZState.state)};
 };
 const resetState = ()=>{
@@ -340,4 +340,4 @@ const patchState = (desire)=>{
     }
 };
 
-export { defineState as default, defineState, installStore, patchState, resetState, storeToRefs, useGetters, useStore };
+export { defineState as default, defineState, installStore, patchState, resetState, stateToRefs, useGetters, useState };
