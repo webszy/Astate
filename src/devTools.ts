@@ -4,12 +4,12 @@ import {realState_type} from "./utils";
 
 const initDevtools =   (app:any,store:realState_type) => {
     const stateType = 'routing properties'
-    const INSPECTOR_ID = 'zState-inspector'
+    const INSPECTOR_ID = 'OnlyState-inspector'
     setupDevtoolsPlugin({
         id: 'org.webszy.zState',
         app,
-        label: 'zState',
-        packageName: 'zState',
+        label: 'OnlyState',
+        packageName: 'OnlyState',
         homepage: 'https://github.com/webszy/zState',
         logo: 'https://vuejs.org/images/icons/favicon-96x96.png',
         componentStateTypes: [

@@ -28,7 +28,7 @@ export const defineState = (state: {[key:string]:any},getters?:any)=>{
         const keys:string[] = Object.keys(getters)
         const hasDuplicateKey:boolean = keys.some(key => key in state)
         if(hasDuplicateKey){
-            console.log(`[ZState warning] some key is already defined in state,it will be overrided by storeToRefs`)
+            console.log(`[OnlyState warning] some key is already defined in state,it will be overrided by storeToRefs`)
         }
         keys.forEach((key) => {
             if (isFunction(getters[key])) {
@@ -83,7 +83,7 @@ export const useGetters = (key:string|string[],...rest:any[])=>{
     }
 }
 export const stateToRefs = () => {
-    const getters = _State.getters ? _State.getters.getters : {}
+    const getters = _State.getters ? _State.getters : {}
     return {...getters,...toRefs(_State.state)};
 }
 export const resetState = ()=>{

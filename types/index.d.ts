@@ -19,7 +19,9 @@ export declare const useGetters: (key: string | string[], ...rest: any[]) => fal
     value?: any;
 } | undefined)[] | undefined;
 export declare const stateToRefs: () => {
-    value?: any;
+    [x: string]: {
+        value?: any;
+    } | import("vue").Ref<any>;
 };
 export declare const resetState: () => void;
 export declare const patchState: (desire: any) => void;

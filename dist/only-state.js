@@ -1,7 +1,7 @@
 /*
-* only-state.js 0.0.5
+* only-state.js 0.0.6
 * author:webszy
-* date:2022/5/10 下午6:09:30
+* date:2022/5/11 上午10:23:21
 */
 import { reactive, computed, toRefs } from 'vue';
 
@@ -175,12 +175,12 @@ function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
 // @ts-ignore
 const initDevtools = (app, store) => {
     const stateType = 'routing properties';
-    const INSPECTOR_ID = 'zState-inspector';
+    const INSPECTOR_ID = 'OnlyState-inspector';
     setupDevtoolsPlugin({
         id: 'org.webszy.zState',
         app,
-        label: 'zState',
-        packageName: 'zState',
+        label: 'OnlyState',
+        packageName: 'OnlyState',
         homepage: 'https://github.com/webszy/zState',
         logo: 'https://vuejs.org/images/icons/favicon-96x96.png',
         componentStateTypes: [
@@ -271,7 +271,7 @@ const defineState = (state, getters) => {
         const keys = Object.keys(getters);
         const hasDuplicateKey = keys.some(key => key in state);
         if (hasDuplicateKey) {
-            console.log(`[ZState warning] some key is already defined in state,it will be overrided by storeToRefs`);
+            console.log(`[OnlyState warning] some key is already defined in state,it will be overrided by storeToRefs`);
         }
         keys.forEach((key) => {
             if (isFunction(getters[key])) {
@@ -330,7 +330,7 @@ const useGetters = (key, ...rest) => {
     }
 };
 const stateToRefs = () => {
-    const getters = _State.getters ? _State.getters.getters : {};
+    const getters = _State.getters ? _State.getters : {};
     return { ...getters, ...toRefs(_State.state) };
 };
 const resetState = () => {
