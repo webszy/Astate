@@ -1,7 +1,7 @@
 /*
-* only-state.js 0.0.6
+* only-state.js 0.0.7
 * author:webszy
-* date:2022/5/11 上午10:23:21
+* date:2022/5/11 上午10:26:42
 */
 import { reactive, computed, toRefs } from 'vue';
 
@@ -177,11 +177,11 @@ const initDevtools = (app, store) => {
     const stateType = 'routing properties';
     const INSPECTOR_ID = 'OnlyState-inspector';
     setupDevtoolsPlugin({
-        id: 'org.webszy.zState',
+        id: 'org.webszy.onlystate',
         app,
         label: 'OnlyState',
         packageName: 'OnlyState',
-        homepage: 'https://github.com/webszy/zState',
+        homepage: 'https://github.com/webszy/only-state',
         logo: 'https://vuejs.org/images/icons/favicon-96x96.png',
         componentStateTypes: [
             stateType
@@ -193,14 +193,14 @@ const initDevtools = (app, store) => {
         }, 5000);
         api.addInspector({
             id: INSPECTOR_ID,
-            label: 'zState',
+            label: 'OnlyState',
             icon: 'collections_bookmark'
         });
         api.on.getInspectorTree((payload) => {
             if (payload.inspectorId === INSPECTOR_ID) {
                 payload.rootNodes = [{
                         id: 'root',
-                        label: 'zState',
+                        label: 'OnlyState',
                         children: []
                     }];
             }

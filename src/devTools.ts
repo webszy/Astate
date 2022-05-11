@@ -6,11 +6,11 @@ const initDevtools =   (app:any,store:realState_type) => {
     const stateType = 'routing properties'
     const INSPECTOR_ID = 'OnlyState-inspector'
     setupDevtoolsPlugin({
-        id: 'org.webszy.zState',
+        id: 'org.webszy.onlystate',
         app,
         label: 'OnlyState',
         packageName: 'OnlyState',
-        homepage: 'https://github.com/webszy/zState',
+        homepage: 'https://github.com/webszy/only-state',
         logo: 'https://vuejs.org/images/icons/favicon-96x96.png',
         componentStateTypes: [
             stateType
@@ -22,14 +22,14 @@ const initDevtools =   (app:any,store:realState_type) => {
         }, 5000)
         api.addInspector({
             id: INSPECTOR_ID,
-            label: 'zState',
+            label: 'OnlyState',
             icon: 'collections_bookmark'
         })
         api.on.getInspectorTree((payload:any) => {
             if (payload.inspectorId === INSPECTOR_ID) {
                 payload.rootNodes = [{
                     id: 'root',
-                    label: 'zState',
+                    label: 'OnlyState',
                     children: []
                 }]
             }
