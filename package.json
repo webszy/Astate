@@ -1,6 +1,6 @@
 {
   "name": "onlystate",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "A state and only state management library for Vue3",
   "main": "dist/only-state.js",
   "type": "module",

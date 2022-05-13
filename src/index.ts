@@ -1,6 +1,6 @@
 
 // @ts-ignore
-import {reactive, computed, toRefs} from "vue";
+import {reactive, computed, toRefs, toRaw} from "vue";
 import initDevtools from "./devTools";
 import {isObject,concatAllParams,isFunction} from "./utils";
 declare interface realState_type{
@@ -45,12 +45,12 @@ export const defineState = (state: {[key:string]:any},getters?:any)=>{
     }
     return installStore
 }
-export const useState = (key:string|string[],...rest:any[])=>{
+export const useState = (key:string | string[],...rest:any[]): any | any[]=>{
     const params = concatAllParams(key,...rest)
     const len = params.length
     const hasParams = len >= 0
     const hasKey = (keyName:string) => keyName in _State.state
-    const getOne = (keyName:string) => hasKey(keyName) ? toRefs(_State.state)[keyName] : <any>undefined
+    const getOne = (keyName:string) => hasKey(keyName) ? toRefs(_State.state)[keyName] : undefined
     if(len === 0){
         return _State.state
     }
@@ -64,7 +64,7 @@ export const useState = (key:string|string[],...rest:any[])=>{
         return params.map(getOne)
     }
 }
-export const useGetters = (key:string|string[],...rest:any[])=>{
+export const useGetters = (key:string | string[],...rest:any[]): any | any[]=>{
     if(!_State.getters){return undefined}
     if(Object.keys(_State.getters).length === 0){
         console.log(`[onlyState warning] make sure you define getters`)
@@ -74,7 +74,7 @@ export const useGetters = (key:string|string[],...rest:any[])=>{
     const len = params.length
     const hasParams = len >= 0
     const hasKey = (keyName:string) => keyName in _State.getters
-    const getOne = (keyName:string) => hasKey(keyName) ? _State.getters[keyName] : <any>undefined
+    const getOne = (keyName:string) => hasKey(keyName) ? _State.getters[keyName] :undefined
     if(len === 0){
         return _State.getters
     }
@@ -88,14 +88,33 @@ export const useGetters = (key:string|string[],...rest:any[])=>{
         return params.map(getOne)
     }
 }
-export const stateToRefs = () => {
+export const useStateRaw = (key:string | string[],...rest:any[]): any | any[]=>{
+    const params = concatAllParams(key,...rest)
+    const len = params.length
+    const hasParams = len >= 0
+    const hasKey = (keyName:string) => keyName in _State.state
+    const getOne = (keyName:string) => hasKey(keyName) ? toRaw(_State.state)[keyName] : undefined
+    if(len === 0){
+        return toRaw(_State.state)
+    }
+    if(hasParams && params.some(e=>typeof e !== 'string')){
+        console.error('use Function Alert: the key of use must be String or String Array')
+        return
+    }
+    if (len === 1){
+        return getOne(params[0])
+    } else {
+        return params.map(getOne)
+    }
+}
+export const stateToRefs = ():any => {
     const getters = _State.getters ? _State.getters : {}
     return {...getters,...toRefs(_State.state)};
 }
-export const resetState = ()=>{
+export const resetState = ():void=>{
     Object.assign(_State.state,originState)
 }
-export const patchState = (desire:any)=>{
+export const patchState = (desire:any):void=>{
     if(isObject(desire)){
         Object.assign(_State.state,desire)
     } else if(isFunction(desire)){
@@ -110,7 +129,8 @@ const OnlyState ={
     useGetters,
     stateToRefs,
     resetState,
-    patchState
+    patchState,
+    useStateRaw
 }
 export default OnlyState
 

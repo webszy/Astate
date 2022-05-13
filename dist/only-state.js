@@ -1,9 +1,9 @@
 /*
-* only-state.js 0.0.11
+* only-state.js 0.0.13
 * author:webszy
-* date:2022/5/12 上午10:08:16
+* date:2022/5/13 上午11:57:38
 */
-import { reactive, computed, toRefs } from 'vue';
+import { reactive, computed, toRaw, toRefs } from 'vue';
 
 function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -331,6 +331,26 @@ const useGetters = (key, ...rest) => {
         return params.map(getOne);
     }
 };
+const useStateRaw = (key, ...rest) => {
+    const params = concatAllParams(key, ...rest);
+    const len = params.length;
+    const hasParams = len >= 0;
+    const hasKey = (keyName) => keyName in _State.state;
+    const getOne = (keyName) => hasKey(keyName) ? toRaw(_State.state)[keyName] : undefined;
+    if (len === 0) {
+        return toRaw(_State.state);
+    }
+    if (hasParams && params.some(e => typeof e !== 'string')) {
+        console.error('use Function Alert: the key of use must be String or String Array');
+        return;
+    }
+    if (len === 1) {
+        return getOne(params[0]);
+    }
+    else {
+        return params.map(getOne);
+    }
+};
 const stateToRefs = () => {
     const getters = _State.getters ? _State.getters : {};
     return { ...getters, ...toRefs(_State.state) };
@@ -358,4 +378,4 @@ const OnlyState = {
     patchState
 };
 
-export { OnlyState as default, defineState, patchState, resetState, stateToRefs, useGetters, useState };
+export { OnlyState as default, defineState, patchState, resetState, stateToRefs, useGetters, useState, useStateRaw };
