@@ -15,3 +15,4 @@ const cleanDir = function(path){
 }
 cleanDir(path.resolve(__dirname, './dist'))
 cleanDir(path.resolve(__dirname, './types'))
+console.log('clean dist and types')

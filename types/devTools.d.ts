@@ -1,3 +1,2 @@
-import { realState_type } from "./utils";
-declare const initDevtools: (app: any, store: realState_type) => void;
+declare const initDevtools: (app: any, store: any) => void;
 export default initDevtools;

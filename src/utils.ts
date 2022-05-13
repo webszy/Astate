@@ -9,7 +9,4 @@ export const concatAllParams = (key:string|string[],...rest:any[])=>{
     }
     return params.filter(e=>e&&e!=='')
 }
-export interface realState_type{
-    state:{[key:string]:any};
-    getters: { [key: string]: {value?:any} };
-}
+

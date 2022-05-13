@@ -1,14 +1,19 @@
+
 // @ts-ignore
 import {reactive, computed, toRefs} from "vue";
 import initDevtools from "./devTools";
-import {isObject,concatAllParams,isFunction,realState_type} from "./utils";
+import {isObject,concatAllParams,isFunction} from "./utils";
+declare interface realState_type{
+    state:{[key:string]:any};
+    getters: { [key: string]: {value?:any} };
+}
 const originState = {}
 const _State:realState_type = {
     state: {},
     getters: {}
 }
 
-export const installStore = {
+const installStore = {
     install(app:any) {
         app.config.globalProperties.$ostate = _State
         initDevtools(app,_State)
@@ -21,7 +26,6 @@ export const defineState = (state: {[key:string]:any},getters?:any)=>{
         _State.state = reactive(state)
     } else {
         console.log('[onlyState warning] you must define a state')
-        return  false
     }
 
     if (isObject(getters) && Object.keys(getters).length > 0) {
@@ -36,6 +40,8 @@ export const defineState = (state: {[key:string]:any},getters?:any)=>{
                 _State.getters[key] = computed(func);
             }
         });
+    } else {
+        console.log('[onlyState warning] why you do not need getters')
     }
     return installStore
 }
@@ -44,7 +50,7 @@ export const useState = (key:string|string[],...rest:any[])=>{
     const len = params.length
     const hasParams = len >= 0
     const hasKey = (keyName:string) => keyName in _State.state
-    const getOne = (keyName:string) => hasKey(keyName) ? toRefs(_State .state)[keyName] : undefined
+    const getOne = (keyName:string) => hasKey(keyName) ? toRefs(_State.state)[keyName] : <any>undefined
     if(len === 0){
         return _State.state
     }
@@ -68,7 +74,7 @@ export const useGetters = (key:string|string[],...rest:any[])=>{
     const len = params.length
     const hasParams = len >= 0
     const hasKey = (keyName:string) => keyName in _State.getters
-    const getOne = (keyName:string) => hasKey(keyName) ? _State.getters[keyName] : undefined
+    const getOne = (keyName:string) => hasKey(keyName) ? _State.getters[keyName] : <any>undefined
     if(len === 0){
         return _State.getters
     }
@@ -98,4 +104,13 @@ export const patchState = (desire:any)=>{
         console.log('[onlyState warning] $patch function receive an object or a function')
     }
 }
-export default defineState
+const OnlyState ={
+    defineState,
+    useState,
+    useGetters,
+    stateToRefs,
+    resetState,
+    patchState
+}
+export default OnlyState
+

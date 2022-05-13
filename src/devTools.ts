@@ -1,8 +1,7 @@
 // @ts-ignore
 import {setupDevtoolsPlugin} from '@vue/devtools-api'
-import {realState_type} from "./utils";
 
-const initDevtools =   (app:any,store:realState_type) => {
+const initDevtools =   (app:any,store:any) => {
     const stateType = 'routing properties'
     const INSPECTOR_ID = 'OnlyState-inspector'
     setupDevtoolsPlugin({

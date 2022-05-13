@@ -1,6 +1,6 @@
 {
   "name": "onlystate",
-  "version": "0.0.7",
+  "version": "0.0.11",
   "description": "A state and only state management library for Vue3",
   "main": "dist/only-state.js",
   "type": "module",
@@ -26,9 +26,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.2",
     "rollup": "^2.72.1",
-    "rollup-plugin-dts": "^4.2.1",
     "rollup-plugin-typescript2": "^0.31.2"
   }
 }

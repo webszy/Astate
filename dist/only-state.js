@@ -1,7 +1,7 @@
 /*
-* only-state.js 0.0.7
+* only-state.js 0.0.11
 * author:webszy
-* date:2022/5/11 上午10:26:42
+* date:2022/5/12 上午10:08:16
 */
 import { reactive, computed, toRefs } from 'vue';
 
@@ -265,7 +265,6 @@ const defineState = (state, getters) => {
     }
     else {
         console.log('[onlyState warning] you must define a state');
-        return false;
     }
     if (isObject(getters) && Object.keys(getters).length > 0) {
         const keys = Object.keys(getters);
@@ -279,6 +278,9 @@ const defineState = (state, getters) => {
                 _State.getters[key] = computed(func);
             }
         });
+    }
+    else {
+        console.log('[onlyState warning] why you do not need getters');
     }
     return installStore;
 };
@@ -347,5 +349,13 @@ const patchState = (desire) => {
         console.log('[onlyState warning] $patch function receive an object or a function');
     }
 };
+const OnlyState = {
+    defineState,
+    useState,
+    useGetters,
+    stateToRefs,
+    resetState,
+    patchState
+};
 
-export { defineState as default, defineState, installStore, patchState, resetState, stateToRefs, useGetters, useState };
+export { OnlyState as default, defineState, patchState, resetState, stateToRefs, useGetters, useState };
